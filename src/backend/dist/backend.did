@@ -1,0 +1,75 @@
+type UserStatus = 
+ variant {
+   Active;
+   Inactive;
+ };
+type UserRole = 
+ variant {
+   Admin;
+   Editor;
+   Viewer;
+ };
+type UserId = text;
+type User = 
+ record {
+   email: text;
+   id: UserId;
+   joinDate: Timestamp;
+   name: text;
+   role: UserRole;
+   status: UserStatus;
+ };
+type Timestamp = int;
+type SearchResults = 
+ record {
+   contentResults: vec ContentItem;
+   userResults: vec User;
+ };
+type Metrics = 
+ record {
+   activeSessions: nat;
+   contentItems: nat;
+   sevenDayChange: float64;
+   totalUsers: nat;
+ };
+type ContentType = 
+ variant {
+   Blog;
+   Page;
+   Resource;
+ };
+type ContentStatus = 
+ variant {
+   Draft;
+   Published;
+ };
+type ContentItem = 
+ record {
+   author: text;
+   contentType: ContentType;
+   createdAt: Timestamp;
+   id: ContentId;
+   status: ContentStatus;
+   title: text;
+   updatedAt: Timestamp;
+ };
+type ContentId = text;
+service : {
+  createContent: (title: text, contentType: ContentType, author: text,
+   status: ContentStatus) -> (ContentItem);
+  createUser: (name: text, email: text, role: UserRole, status:
+   UserStatus) -> (User);
+  deleteContent: (id: text) -> (bool);
+  deleteUser: (id: text) -> (bool);
+  getContent: () -> (vec ContentItem) query;
+  getContentItem: (id: text) -> (opt ContentItem) query;
+  getMetrics: () -> (Metrics) query;
+  getUser: (id: text) -> (opt User) query;
+  getUsers: () -> (vec User) query;
+  searchAll: (searchTerm: text) -> (SearchResults) query;
+  togglePublish: (id: text) -> (opt ContentItem);
+  updateContent: (id: text, title: opt text, contentType: opt ContentType,
+   author: opt text, status: opt ContentStatus) -> (opt ContentItem);
+  updateUser: (id: text, name: opt text, email: opt text, role: opt UserRole,
+   status: opt UserStatus) -> (opt User);
+}

@@ -1,0 +1,23 @@
+{
+  "overview": "A full-featured admin dashboard with authentication, real-time metrics, user management, and content management — all in a clean, responsive layout with dark/light mode support.",
+  "features": [
+    "Internet Identity login with access control",
+    "Overview with 4 key metric cards that auto-refresh",
+    "Global search across users and content",
+    "Users table with sort, filter, and detail panel",
+    "Content management table with publish/unpublish actions",
+    "Dark/light mode toggle persisted across sessions",
+    "Mobile-responsive sidebar with hamburger toggle",
+    "Toast notifications and confirmation modals"
+  ],
+  "category": "productivity",
+  "tags": [
+    "admin",
+    "dashboard",
+    "management",
+    "analytics",
+    "users",
+    "content"
+  ],
+  "last_updated": "2026-04-18T12:50:44.346Z"
+}
